@@ -1,2 +1,4 @@
 print('Hello World')
-print(x)
+x = 5
+y = "hello"
+z = x + y
