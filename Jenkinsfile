@@ -3,8 +3,12 @@ pipeline {
   stages {
     stage('hello') {
       steps {
-        bat 'hello.py'
-        echo 'set'
+         script {
+                    catchError(buildResult: 'FAILURE') {
+                        bat 'hello.py'
+                        echo 'set'
+                    }
+                }
       }
     }
   }
