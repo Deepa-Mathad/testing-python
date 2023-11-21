@@ -12,9 +12,7 @@ pipeline {
       }
       stage('Test') {
         steps {
-           steps{
              bat 'hello.py'
-           }
          }
       }
     }
