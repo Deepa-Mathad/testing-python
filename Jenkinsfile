@@ -4,6 +4,7 @@ pipeline {
     stage('hello') {
       steps {
         bat 'hello.py'
+        echo 'set'
       }
     }
   }
