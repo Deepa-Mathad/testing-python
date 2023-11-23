@@ -1,3 +1,10 @@
+
+
+def dsau() {
+  bat 'hello.py'
+}
+
+
 pipeline {
   agent any
   stages {
@@ -12,7 +19,7 @@ pipeline {
     }
      stage('Test') {
         steps {
-             bat 'hello.py'
+             dsau()
          }
       }
   }
