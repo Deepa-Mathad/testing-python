@@ -6,7 +6,6 @@ pipeline {
          script {
                     catchError(buildResult: 'FAILURE') {
                         bat 'hello.py'
-                        echo 'set'
                     }
                 }
       }
@@ -17,4 +16,10 @@ pipeline {
          }
       }
   }
+  post{
+        // always cleanup
+        always{
+            deleteDir()
+        }
+    }
 }
