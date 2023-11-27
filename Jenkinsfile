@@ -2,7 +2,7 @@
 
 def dsau() {
   command = """ """
-  command = command + "python hello.py"
+  command = command + "bat hello.py"
 
   echo command
   sh command
