@@ -5,7 +5,7 @@ def dsau() {
   command = command + "bat hello.py"
 
   echo command
-  sh command
+  bat command
 }
 
 
