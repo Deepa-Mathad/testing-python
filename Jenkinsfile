@@ -2,7 +2,7 @@
 
 def dsau() {
   command = """ """
-  command = command + "python hello.py"
+  command = command + "python hello.py "
   command = command + "pip install requests"
 
   echo command
