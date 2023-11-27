@@ -1,7 +1,11 @@
 
 
 def dsau() {
-  bat 'hello.py'
+  command = """ """
+  command = command + "python hello.py"
+
+  echo command
+  sh command
 }
 
 
