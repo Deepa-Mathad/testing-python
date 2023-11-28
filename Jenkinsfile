@@ -12,7 +12,7 @@ def dsau() {
   }
   catch (e)
     {
-        println("Failed in running DSAU", e)
+        // println("Failed in running DSAU", e)
         error("Exceptions with ${e}")
     }
 }
