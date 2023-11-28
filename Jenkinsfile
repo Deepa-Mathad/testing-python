@@ -14,6 +14,7 @@ def dsau() {
     {
         // println("Failed in running DSAU", e)
         error("Exceptions with ${e}")
+        return e
     }
 }
 
