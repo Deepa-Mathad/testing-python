@@ -1,10 +1,8 @@
 
 
 def dsau() {
-  try{
-    
-    command = """ """
-    command = command + "python hello.py "
+  try {
+    command = """python hello.py"""
     
     // Print the command (optional)
     echo "Running command: ${command}"
@@ -14,8 +12,9 @@ def dsau() {
 
     // Print the return value
     echo "Return Value: ${returnValue}"
-    // echo command
-    // bat command
+
+    // Return the value
+    return returnValue
   }
   catch (e)
     {
