@@ -2,7 +2,6 @@
 import json
 
 def initial():
-  try:
     print('Hello World')
     # some JSON:
     x = '{ "name":"John", "age":30, "city":"New York"}'
@@ -13,5 +12,3 @@ def initial():
     
     # the result is a Python dictionary:
     print(y["number"])
-  except Exception as e:
-    print("error", e)
