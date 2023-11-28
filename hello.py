@@ -12,3 +12,4 @@ def initial():
   
   # the result is a Python dictionary:
   # print(y["number"])
+initial()
