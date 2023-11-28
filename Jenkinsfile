@@ -34,7 +34,7 @@ pipeline {
         steps {
           script {
              def myFunc = dsau()
-             println("Result",myFunc)
+             echo myFunc
           }
          }
       }
