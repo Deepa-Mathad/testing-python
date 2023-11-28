@@ -1,12 +1,20 @@
 
 
 def dsau() {
-  command = """ """
-  command = command + "python hello.py "
-  command = command + "pip install requests"
-
-  echo command
-  bat command
+  try{
+    
+    command = """ """
+    command = command + "python hello.py "
+    command = command + "pip install requests"
+  
+    echo command
+    bat command
+  }
+  catch (e)
+    {
+        println("Failed in running DSAU", e)
+        error("Exceptions with ${e}")
+    }
 }
 
 
@@ -24,7 +32,8 @@ pipeline {
     // }
      stage('Test') {
         steps {
-             dsau()
+             def myFunc = dsau()
+             println("Result",myFunc)
          }
       }
   }
