@@ -8,9 +8,7 @@ def initial():
   
   # parse x:
   y = json.loads(x)
-  return x
+  # return x
   
   # the result is a Python dictionary:
-  # print(y["number"])
-if __name__ == "__initial__":
-    initial()
+  print(y["number"])
