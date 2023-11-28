@@ -5,9 +5,17 @@ def dsau() {
     
     command = """ """
     command = command + "python hello.py "
-  
-    echo command
-    bat command
+    
+    // Print the command (optional)
+    echo "Running command: ${command}"
+
+    // Execute the command and capture the return value
+    def returnValue = sh(script: command, returnStatus: true, returnStdout: true).trim()
+
+    // Print the return value
+    echo "Return Value: ${returnValue}"
+    // echo command
+    // bat command
   }
   catch (e)
     {
