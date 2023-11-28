@@ -12,5 +12,5 @@ def initial():
   
   # the result is a Python dictionary:
   # print(y["number"])
-if __name__ == "__main__":
+if __name__ == "__initial__":
     initial()
