@@ -32,8 +32,10 @@ pipeline {
     // }
      stage('Test') {
         steps {
+          script {
              def myFunc = dsau()
              println("Result",myFunc)
+          }
          }
       }
   }
