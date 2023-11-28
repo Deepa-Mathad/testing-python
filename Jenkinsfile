@@ -5,7 +5,6 @@ def dsau() {
     
     command = """ """
     command = command + "python hello.py "
-    command = command + "pip install requests"
   
     echo command
     bat command
