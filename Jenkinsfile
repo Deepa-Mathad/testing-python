@@ -35,7 +35,7 @@ pipeline {
         steps {
           script {
              def myFunc = dsau()
-             echo myFunc
+             echo "My Variable Value: ${myFunc}"
           }
          }
       }
