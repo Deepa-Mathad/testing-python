@@ -42,7 +42,7 @@ pipeline {
           script {
              def myFunc = dsau()
              echo "My Variable Value: ${myFunc}"
-             if (myFunc = 0) {
+             if (myFunc == 0) {
                         echo "Stage succeeded"
                         currentBuild.result = 'SUCCESS'
                     } else {
