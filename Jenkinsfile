@@ -8,7 +8,7 @@ def dsau() {
     echo "Running command: ${command}"
 
     // Execute the command and capture the return value
-    def returnValue = bat(script: command, returnStatus: true, returnStdout: true)
+    def returnValue = sh(script: command, returnStatus: true, returnStdout: true)
 
     // Print the return value
     echo "Return Value: ${returnValue}"
