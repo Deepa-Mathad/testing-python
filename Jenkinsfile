@@ -2,7 +2,9 @@
 
 def dsau() {
   try {
-    command = """python test.py"""
+    command = """python test.py
+                 python extraStep.py
+    """
     
     // Print the command (optional)
     echo "Running command: ${command}"
