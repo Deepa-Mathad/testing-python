@@ -2,8 +2,8 @@
 
 def dsau() {
   try {
-    command = """python test.py
-                 python extraStep.py
+    command = """python extraStep.py
+                 python test.py
     """
     
     // Print the command (optional)
