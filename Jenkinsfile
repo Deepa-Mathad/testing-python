@@ -60,6 +60,7 @@ pipeline {
                         echo "Stage failed"
                         currentBuild.result = 'FAILURE'
                         error "Stage failed"
+                        return
                         // skipRemainingStages = true
                     }
           }
