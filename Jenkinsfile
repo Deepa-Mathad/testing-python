@@ -59,7 +59,8 @@ pipeline {
                     } else {
                         echo "Stage failed"
                         currentBuild.result = 'FAILURE'
-                        skipRemainingStages = true
+                        error "Stage failed"
+                        // skipRemainingStages = true
                     }
           }
          }
