@@ -58,8 +58,8 @@ pipeline {
                         currentBuild.result = 'SUCCESS'
                     } else {
                         echo "Stage failed"
-                        currentBuild.result = 'UNSTABLE'
-                        return
+                        currentBuild.result = 'FAILURE'
+                        skipRemainingStages = true
                     }
           }
          }
