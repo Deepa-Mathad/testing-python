@@ -64,6 +64,11 @@ pipeline {
           }
          }
       }
+    stage('Upload database to artifactory'){
+            steps{
+                echo "Uploaded DB to artifactory"
+            }
+        }
   }
   post{
         // always cleanup
