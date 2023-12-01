@@ -10,7 +10,7 @@ def dsau() {
     echo "Running command: ${command}"
 
     // Execute the command and capture the return value
-    def returnValue = bat(script: command, returnStatus: true, returnStdout: true)
+    def returnValue = bat(command, returnStatus: true, returnStdout: true)
 
     // def returnValue1 = bat(script: 'python test.py', returnStatus: true, returnStdout: true)
     // if(returnValue1 != 0){
