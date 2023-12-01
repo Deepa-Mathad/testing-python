@@ -10,22 +10,22 @@ def dsau() {
     echo "Running command: ${command}"
 
     // Execute the command and capture the return value
-    //def returnValue = bat(script: command, returnStatus: true, returnStdout: true)
+    def returnValue = bat(script: command, returnStatus: true, returnStdout: true)
 
-    def returnValue1 = bat(script: 'python test.py', returnStatus: true, returnStdout: true)
-    if(returnValue1 != 0){
-      echo "Return Value: ${returnValue1}"
-      return returnValue1
-    }
-    else{
-      def returnValue2 = bat(script: 'python extraStep.py', returnStatus: true, returnStdout: true)
-    }
+    // def returnValue1 = bat(script: 'python test.py', returnStatus: true, returnStdout: true)
+    // if(returnValue1 != 0){
+    //   echo "Return Value: ${returnValue1}"
+    //   return returnValue1
+    // }
+    // else{
+    //   def returnValue2 = bat(script: 'python extraStep.py', returnStatus: true, returnStdout: true)
+    // }
 
     // Print the return value
    // echo "Return Value: ${returnValue}"
 
     // Return the value
-   // return returnValue
+    return returnValue
   }
   catch (e)
     {
