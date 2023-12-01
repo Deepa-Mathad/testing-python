@@ -51,7 +51,6 @@ pipeline {
      stage('Test') {
         steps {
           script {
-            catchError(buildResult: 'FAILURE') {
              def myFunc = dsau()
              echo "My Variable Value: ${myFunc}"
              if (myFunc == 0) {
@@ -63,7 +62,6 @@ pipeline {
                         error "Stage failed"
                         // skipRemainingStages = true
                     }
-            }
           }
          }
       }
