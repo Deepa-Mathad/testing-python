@@ -10,7 +10,12 @@ def dsau() {
     echo "Running command: ${command}"
 
     // Execute the command and capture the return value
-    def returnValue = bat(command, returnStatus: true, returnStdout: true)
+    try{
+      
+      def returnValue = bat(command, returnStatus: true, returnStdout: true)
+   } catch (Exception e) {
+      echo "Cause: ${e.getCause()}"
+    }
 
     // def returnValue1 = bat(script: 'python test.py', returnStatus: true, returnStdout: true)
     // if(returnValue1 != 0){
