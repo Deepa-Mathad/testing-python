@@ -11,8 +11,8 @@ def dsau() {
 
     // Execute the command and capture the return value
     try{
-      
       def returnValue = bat(script: command, returnStatus: true, returnStdout: true)
+      return returnValue
    } catch (Exception e) {
       echo "Cause: ${e.getCause()}"
     }
@@ -30,7 +30,6 @@ def dsau() {
    // echo "Return Value: ${returnValue}"
 
     // Return the value
-    return returnValue
   }
   catch (e)
     {
