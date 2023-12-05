@@ -4,9 +4,9 @@ def dsau() {
   try {
     command = """python extraStep.py
                  python test.py
-                 "--f360=client-delivery "
-                 "--scanner=clang-static-analyzer "
     """
+    command = command + "--f360=client-delivery "
+    command = command + "--scanner=clang-static-analyzer "
     
     // Print the command (optional)
     echo "Running command: ${command}"
