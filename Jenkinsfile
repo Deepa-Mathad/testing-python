@@ -21,7 +21,8 @@ def dsau() {
       echo returnValue.stdout
       return returnValue
    } catch (Exception e) {
-      echo "Cause: ${e.getCause()}"
+      echo "Cause: ${e}"
+      return e
     }
 
     // def returnValue1 = bat(script: 'python test.py', returnStatus: true, returnStdout: true)
