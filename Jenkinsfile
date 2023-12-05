@@ -3,8 +3,8 @@
 def dsau() {
   try {
     command = """python extraStep.py
-                 python test.py
     """
+    command = command + "python test.py"
     command = command + "--f360=client-delivery "
     command = command + "--scanner=clang-static-analyzer "
     
