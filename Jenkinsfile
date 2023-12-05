@@ -11,8 +11,9 @@ def dsau() {
 
     // Execute the command and capture the return value
     try{
+      def combinedCommand = "${command} 2>&1"
       def returnValue = bat(script: command, returnStatus: true, returnStdout: true)
-      def stderr = bat(script: command, returnStatus: true)
+      def stderr = bat(script: combinedCommand, returnStatus: true)
       echo "stderr:"
       echo stderr
       echo "Standard Error Output:"
