@@ -2,7 +2,7 @@
 
 def dsau() {
   try {
-    command = """"python test.py"
+    command = """python test.py"
                   python extraStep.py
     """
     
