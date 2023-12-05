@@ -11,7 +11,7 @@ def dsau() {
 
     // Execute the command and capture the return value
     try{
-      def returnValue = bat(script: command, returnStatus: true, returnStdout: true, returnStderr: true)
+      def returnValue = bat(script: command, returnStatus: true, returnStdout: true)
       def stderr = script.bat(script: 'command', returnStderr: true).trim()
       echo "stderr:"
       echo stderr
