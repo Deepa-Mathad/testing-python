@@ -12,14 +12,12 @@ def dsau() {
     // Execute the command and capture the return value
     try{
       def combinedCommand = "${command} 2>&1"
-      def returnValue = bat(script: command, returnStatus: true, returnStdout: true)
-      def stderr = bat(script: combinedCommand, returnStatus: true)
-      echo "stderr:"
-      echo stderr
-      echo "Standard Error Output:"
-      echo returnValue.err
+      def returnValue = bat(script: combinedCommand, returnStatus: true, returnStdout: true)
+      //def stderr = bat(script: combinedCommand, returnStatus: true)
       echo "Standard Output:"
       echo returnValue.stdout
+      echo "Standard Error Output:"
+      echo returnValue.err
       return returnValue
    } catch (Exception e) {
       echo "Cause: ${e}"
