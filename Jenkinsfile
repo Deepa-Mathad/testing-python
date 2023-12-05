@@ -12,10 +12,13 @@ def dsau() {
     // Execute the command and capture the return value
     try{
       def returnValue = bat(script: command, returnStatus: true, returnStdout: true, returnStderr: true)
-       echo "Standard Error Output:"
-       echo returnValue.err
-       echo "Standard Output:"
-       echo returnValue.stdout
+      def stderr = script.bat(script: 'command', returnStderr: true).trim()
+      echo "stderr:"
+      echo stderr
+      echo "Standard Error Output:"
+      echo returnValue.err
+      echo "Standard Output:"
+      echo returnValue.stdout
       return returnValue
    } catch (Exception e) {
       echo "Cause: ${e.getCause()}"
