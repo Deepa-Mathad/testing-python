@@ -2,18 +2,20 @@
 
 def dsau() {
   try {
-    command = """python extraStep.py
+    command = """"python test.py"
+                  python extraStep.py
     """
-    command = command + "python test.py"
-    command = command + "--f360=client-delivery "
-    command = command + "--scanner=clang-static-analyzer "
     
     // Print the command (optional)
     echo "Running command: ${command}"
 
     // Execute the command and capture the return value
     try{
-      def returnValue = bat(script: command, returnStatus: true, returnStdout: true)
+      def returnValue = bat(script: command, returnStatus: true, returnStdout: true, returnStderr: true)
+       echo "Standard Error Output:"
+       echo returnValue.err
+       echo "Standard Output:"
+       echo returnValue.stdout
       return returnValue
    } catch (Exception e) {
       echo "Cause: ${e.getCause()}"
