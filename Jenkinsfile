@@ -57,7 +57,7 @@ pipeline {
                     """
 
                     // Run the combined command and capture the output
-                    def combinedOutput = bat(returnStdout: true, script: combinedCommand).trim()
+                    def combinedOutput = bat(returnStdout: true, script: combinedCommand)
 
                     // Print the combined output
                     echo "Combined Output: ${combinedOutput}"
