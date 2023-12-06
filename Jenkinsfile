@@ -13,7 +13,7 @@ def dsau() {
     try{
       // def combinedCommand = "${command} 2>&1"
       def returnValue = bat(script: command, returnStdout: true)
-      echo "returnValue: '${returnValue}'"
+      echo returnValue
       //def stderr = bat(script: combinedCommand, returnStatus: true)
       // return returnValue
    } catch (Exception e) {
