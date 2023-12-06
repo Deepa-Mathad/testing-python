@@ -12,7 +12,7 @@ def dsau() {
     // Execute the command and capture the return value
     try{
       // def combinedCommand = "${command} 2>&1"
-      returnValue = bat(returnStdout: true, script: 'python test.py')
+      def returnValue = bat(returnStdout: true, script: 'python test.py')
       echo "returnValue: ${returnValue}"
       //def stderr = bat(script: combinedCommand, returnStatus: true)
       // return returnValue
@@ -47,15 +47,14 @@ def dsau() {
 pipeline {
   agent any
   stages {
-    // stage('hello') {
-    //   steps {
-    //      script {
-    //                 catchError(buildResult: 'FAILURE') {
-    //                     bat 'hello.py'
-    //                 }
-    //             }
-    //   }
-    // }
+    stage('hello') {
+      steps {
+         script {
+                  def returnValue = bat(returnStdout: true, script: 'python test.py')
+                  echo "returnValue: ${returnValue}"
+                }
+      }
+    }
      stage('Test') {
         steps {
           script {
