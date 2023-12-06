@@ -12,7 +12,7 @@ def dsau() {
     // Execute the command and capture the return value
     try{
       // def combinedCommand = "${command} 2>&1"
-      def returnValue = bat(returnStdout: true, script: 'python test.py')
+      def returnValue = bat(returnStdout: true, script: command)
       echo "returnValue: ${returnValue}"
       //def stderr = bat(script: combinedCommand, returnStatus: true)
       // return returnValue
@@ -49,11 +49,22 @@ pipeline {
   stages {
     stage('hello') {
       steps {
-         script {
-                  def returnValue = bat(returnStdout: true, script: 'python test.py')
-                  echo "returnValue: ${returnValue}"
+                script {
+                    // Define the combined command
+                    def combinedCommand = """
+                        python test.py
+                        python extraStep.py
+                    """
+
+                    // Run the combined command and capture the output
+                    def combinedOutput = bat(returnStdout: true, script: combinedCommand).trim()
+
+                    // Print the combined output
+                    echo "Combined Output: ${combinedOutput}"
+
+                    // Add further processing based on the output if needed
                 }
-      }
+            }
     }
      stage('Test') {
         steps {
