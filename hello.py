@@ -2,7 +2,6 @@
 import json
 
 def initial():
-    print('Hello World')
     # some JSON:
     x = '{ "name":"John", "age":30, "city":"New York"}'
     
