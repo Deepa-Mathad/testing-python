@@ -55,17 +55,20 @@ pipeline {
     stage('hello') {
       steps {
                 script {
+                    def logFilePath = 'output.log'
                     // Define the combined command
                     def combinedCommand = """
-                        python test.py
-                        python extraStep.py
+                        python test.py > ${logFilePath}
+                        python extraStep.py >> ${logFilePath}
                     """
 
                     // Run the combined command and capture the output
-                    def combinedOutput = bat(returnStderr: true, script: combinedCommand)
+                    //def combinedOutput = bat(returnStderr: true, script: combinedCommand)
+
+                    bat(script: command)
 
                     // Print the combined output
-                    echo "Combined Output: ${combinedOutput}"
+                    //echo "Combined Output: ${combinedOutput}"
 
                     // Add further processing based on the output if needed
                 }
