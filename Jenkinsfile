@@ -79,7 +79,7 @@ pipeline {
                     // Define log file paths
                     def logFilePath1 = "${WORKSPACE}/output1.log"
                     def logFilePath2 = "${WORKSPACE}/output2.log"
-                    def pythonExecutable = "C:\\Program Files\\Python310\\python.exe"
+                    def pythonExecutable = "C:\\Program Files\\Python310"
 
                     // Define the combined command with PowerShell redirection for each command
                     def combinedCommand = """
