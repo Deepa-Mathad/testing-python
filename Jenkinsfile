@@ -69,6 +69,7 @@ pipeline {
                     def fullOutput2 = readFile(logFilePath2)
                     echo "Full Output1:\n${fullOutput1}"
                     echo "Full Output1:\n${fullOutput2}"
+                    bat 'cat ${WORKSPACE}/output1.log'
                     // Print the combined output
                     //echo "Combined Output: ${combinedOutput}"
 
