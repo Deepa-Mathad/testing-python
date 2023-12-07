@@ -102,7 +102,8 @@ pipeline {
 
                     // Print the full output
                     echo "Full Output 1:\n${fullOutput1}"
-                    echo fullOutput1
+                    def contentWithoutBOM = fullOutput1.replaceAll("\\uFEFF", "")
+                    echo "contentWithoutBOM: ${contentWithoutBOM}"
                     if(fullOutput1.contains("KeyError:"))
                     {
                       echo "passed"
