@@ -44,6 +44,9 @@ def dsau() {
     }
 }
 
+def containsSubstringWithoutBOM(content, substring) {
+    return content.replaceAll("\\uFEFF", "").contains(substring)
+}
 
 pipeline {
   agent any
@@ -113,7 +116,7 @@ pipeline {
                       echo "failes"
                     }
                     echo "Full Output 2:\n${fullOutput2}"
-                    if (fullOutput2.contains("printing extra step"))
+                    if (containsSubstringWithoutBOM(fullOutput1, "printing extra step"))
                     {
                       echo "full output 2 passed"
                     }
