@@ -100,7 +100,7 @@ pipeline {
 
                     // Print the full output
                     // echo "Full Output 1:\n${fullOutput1}"
-                    if(fullOutput1.contains('components'){
+                    if(fullOutput1.contains('components')){
                       echo "passed"
                     echo "Full Output 2:\n${fullOutput2}"
 
