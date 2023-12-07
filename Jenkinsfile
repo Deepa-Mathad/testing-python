@@ -120,6 +120,7 @@ pipeline {
                     }
                   echo "Debug - Log Output 1:\n${fullOutput1.take(1000)}"
                   echo "Debug - Log Output 2:\n${fullOutput2.take(1000)}"
+                  echo "Hello, World!" | gawk '{print $2}'
                 }
             }
     }
