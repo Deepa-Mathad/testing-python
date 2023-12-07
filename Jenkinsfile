@@ -54,8 +54,8 @@ pipeline {
                     def logFilePath = "${WORKSPACE}/output.log"
                     // Define the combined command
                     def combinedCommand = """
-                        python test.py > ${logFilePath}
-                        python extraStep.py >> ${logFilePath}
+                        python test.py | tee -a ${logFilePath}
+                        python extraStep.py | tee -a ${logFilePath}
                     """
 
                     // Run the combined command and capture the output
