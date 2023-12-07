@@ -62,7 +62,7 @@ pipeline {
                     //def combinedOutput = bat(returnStderr: true, script: combinedCommand)
 
                     bat(script: combinedCommand)
-
+                    echo "Log File Path: ${logFilePath}"
                     // Print the combined output
                     //echo "Combined Output: ${combinedOutput}"
 
