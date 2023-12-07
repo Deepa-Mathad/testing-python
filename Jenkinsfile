@@ -75,19 +75,19 @@ pipeline {
 
                 //     // Add further processing based on the output if needed
                 // }
-                 script {
+                script {
                     // Define log file paths
                     def logFilePath1 = "${WORKSPACE}/output1.log"
                     def logFilePath2 = "${WORKSPACE}/output2.log"
 
-                    // Define the combined command with tee (Git Bash) for each command
+                    // Define the combined command with PowerShell redirection for each command
                     def combinedCommand = """
-                        python test.py | tee ${logFilePath1}
-                        python extraStep.py | tee ${logFilePath2}
+                        python test.py > ${logFilePath1} 2>&1
+                        python extraStep.py > ${logFilePath2} 2>&1
                     """
 
-                    // Run the combined command and capture the output
-                    bat(script: "git-bash.exe -c '${combinedCommand}'")
+                    // Run the combined command and capture the output using PowerShell
+                    powershell(script: combinedCommand)
 
                     // Print the log file paths
                     echo "Log File Path 1: ${logFilePath1}"
