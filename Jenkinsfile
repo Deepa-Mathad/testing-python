@@ -3,7 +3,6 @@
 def dsau() {
   try {
     command = """
-    mkdir virtual_env
     python test.py
     """
     
