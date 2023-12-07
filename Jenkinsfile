@@ -96,6 +96,8 @@ pipeline {
 
                     // Read the full content of the log files
                     def fullOutput1 = readFile(logFilePath1)
+                    def content = readFile(file: 'logFilePath1', encoding: 'UTF-8')
+                    echo "content: ${content}"
                     def fullOutput2 = readFile(logFilePath2)
 
                     // Print the full output
