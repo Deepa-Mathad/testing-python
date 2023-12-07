@@ -61,7 +61,7 @@ pipeline {
                     // Run the combined command and capture the output
                     //def combinedOutput = bat(returnStderr: true, script: combinedCommand)
 
-                    bat(script: combinedOutput)
+                    bat(script: combinedCommand)
 
                     // Print the combined output
                     //echo "Combined Output: ${combinedOutput}"
