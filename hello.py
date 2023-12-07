@@ -10,5 +10,7 @@ def initial():
     # return x
     
     # the result is a Python dictionary:
+    print(y["name"])
     print(y["number"])
+    print(y["age"])
     print("End of function initial")
