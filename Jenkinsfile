@@ -116,7 +116,7 @@ pipeline {
                       echo "failes"
                     }
                     echo "Full Output 2:\n${fullOutput2}"
-                    if (containsSubstringWithoutBOM(fullOutput1, "printing extra step"))
+                    if (containsSubstringWithoutBOM(fullOutput12, "printing extra step"))
                     {
                       echo "full output 2 passed"
                     }
