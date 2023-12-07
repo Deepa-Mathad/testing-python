@@ -51,11 +51,12 @@ pipeline {
     stage('hello') {
       steps {
                 script {
-                    def logFilePath = "${WORKSPACE}/output.log"
+                    def logFilePath1 = "${WORKSPACE}/output1.log"
+                    def logFilePath2 = "${WORKSPACE}/output2.log"
                     // Define the combined command
                     def combinedCommand = """
-                        python test.py | tee -a ${logFilePath}
-                        python extraStep.py | tee -a ${logFilePath}
+                        python test.py > ${logFilePath1}
+                        python extraStep.py > ${logFilePath2}
                     """
 
                     // Run the combined command and capture the output
