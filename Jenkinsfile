@@ -50,30 +50,59 @@ pipeline {
   stages {
     stage('hello') {
       steps {
-                script {
+                // script {
+                //     def logFilePath1 = "${WORKSPACE}/output1.log"
+                //     def logFilePath2 = "${WORKSPACE}/output2.log"
+                //     // Define the combined command
+                //     def combinedCommand = """
+                //         python test.py > ${logFilePath1}
+                //         python extraStep.py > ${logFilePath2}
+                //     """
+
+                //     // Run the combined command and capture the output
+                //     //def combinedOutput = bat(returnStdout: true, script: combinedCommand)
+
+                //     bat(script: combinedCommand)
+                //     echo "Log File Path: ${logFilePath1}"
+                //     echo "Log File Path: ${logFilePath2}"
+                //     def fullOutput1 = readFile(logFilePath1)
+                //     def fullOutput2 = readFile(logFilePath2)
+                //     echo "Full Output1:\n${fullOutput1}"
+                //     echo "Full Output1:\n${fullOutput2}"
+                //     bat 'dir "${WORKSPACE}"'
+                //     // Print the combined output
+                //     //echo "Combined Output: ${combinedOutput}"
+
+                //     // Add further processing based on the output if needed
+                // }
+                 script {
+                    // Define log file paths
                     def logFilePath1 = "${WORKSPACE}/output1.log"
                     def logFilePath2 = "${WORKSPACE}/output2.log"
-                    // Define the combined command
+
+                    // Define the combined command with tee (Git Bash) for each command
                     def combinedCommand = """
-                        python test.py > ${logFilePath1}
-                        python extraStep.py > ${logFilePath2}
+                        python test.py | tee ${logFilePath1}
+                        python extraStep.py | tee ${logFilePath2}
                     """
 
                     // Run the combined command and capture the output
-                    //def combinedOutput = bat(returnStdout: true, script: combinedCommand)
+                    bat(script: "git-bash.exe -c '${combinedCommand}'")
 
-                    bat(script: combinedCommand)
-                    echo "Log File Path: ${logFilePath1}"
-                    echo "Log File Path: ${logFilePath2}"
+                    // Print the log file paths
+                    echo "Log File Path 1: ${logFilePath1}"
+                    echo "Log File Path 2: ${logFilePath2}"
+
+                    // Read the full content of the log files
                     def fullOutput1 = readFile(logFilePath1)
                     def fullOutput2 = readFile(logFilePath2)
-                    echo "Full Output1:\n${fullOutput1}"
-                    echo "Full Output1:\n${fullOutput2}"
-                    bat 'dir "${WORKSPACE}"'
-                    // Print the combined output
-                    //echo "Combined Output: ${combinedOutput}"
 
-                    // Add further processing based on the output if needed
+                    // Print the full output
+                    echo "Full Output 1:\n${fullOutput1}"
+                    echo "Full Output 2:\n${fullOutput2}"
+
+                    // List files in the workspace for verification
+                    bat 'dir "${WORKSPACE}"'
                 }
             }
     }
