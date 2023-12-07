@@ -3,7 +3,9 @@
 def dsau() {
   try {
     command = """
+    mkdir virtual_env
     python test.py
+    python extraStep.py
     """
     
     // Print the command (optional)
