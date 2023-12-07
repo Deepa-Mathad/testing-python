@@ -98,10 +98,10 @@ pipeline {
                     echo "Log File Path 2: ${logFilePath2}"
 
                     // Read the full content of the log files
-                    def fullOutput1 = readFile(logFilePath1)
+                    def fullOutput1 = readFile(file: logFilePath1, encoding: 'UTF-8')
                     // def content = readFile(file: 'logFilePath1', encoding: 'UTF-8')
                     // echo "content: ${content}"
-                    def fullOutput2 = readFile(logFilePath2)
+                    def fullOutput2 = readFile(file: logFilePath2, encoding: 'UTF-8')
 
                     // Print the full output
                     echo "Full Output 1:\n${fullOutput1}"
@@ -118,6 +118,8 @@ pipeline {
                     {
                       echo "full output 2 passed"
                     }
+                  echo "Debug - Log Output 1:\n${fullOutput1.take(1000)}"
+                  echo "Debug - Log Output 2:\n${fullOutput2.take(1000)}"
                 }
             }
     }
