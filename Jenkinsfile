@@ -63,6 +63,8 @@ pipeline {
 
                     bat(script: combinedCommand)
                     echo "Log File Path: ${logFilePath}"
+                    def fullOutput = readFile(logFilePath)
+                    echo "Full Output: ${fullOutput}"
                     // Print the combined output
                     //echo "Combined Output: ${combinedOutput}"
 
