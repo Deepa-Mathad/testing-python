@@ -60,12 +60,15 @@ pipeline {
                     """
 
                     // Run the combined command and capture the output
-                    //def combinedOutput = bat(returnStderr: true, script: combinedCommand)
+                    //def combinedOutput = bat(returnStdout: true, script: combinedCommand)
 
                     bat(script: combinedCommand)
-                    echo "Log File Path: ${logFilePath}"
-                    def fullOutput = readFile(logFilePath)
-                    echo "Full Output:\n${fullOutput}"
+                    echo "Log File Path: ${logFilePath1}"
+                    echo "Log File Path: ${logFilePath2}"
+                    def fullOutput1 = readFile(logFilePath1)
+                    def fullOutput2 = readFile(logFilePath2)
+                    echo "Full Output1:\n${fullOutput1}"
+                    echo "Full Output1:\n${fullOutput2}"
                     // Print the combined output
                     //echo "Combined Output: ${combinedOutput}"
 
