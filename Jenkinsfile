@@ -109,9 +109,6 @@ pipeline {
                       echo "failes"
                     }
                     echo "Full Output 2:\n${fullOutput2}"
-
-                    // List files in the workspace for verification
-                    bat 'dir "${WORKSPACE}"'
                 }
             }
     }
