@@ -110,6 +110,10 @@ pipeline {
                       echo "failes"
                     }
                     echo "Full Output 2:\n${fullOutput2}"
+                    if (fullOutput2.contains("extra step")
+                        {
+                          echo "full output 2 passed"
+                        }
                 }
             }
     }
