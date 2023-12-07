@@ -80,8 +80,8 @@ pipeline {
                 // }
                 script {
                     // Define log file paths
-                    def logFilePath1 = "${WORKSPACE}/output1.log"
-                    def logFilePath2 = "${WORKSPACE}/output2.log"
+                    def logFilePath1 = "${WORKSPACE}/output1.txt"
+                    def logFilePath2 = "${WORKSPACE}/output2.txt"
                     def pythonExecutable = "C:\\Program Files\\Python310\\python.exe"
 
                     // Define the combined command with PowerShell redirection for each command
@@ -99,9 +99,9 @@ pipeline {
 
                     // Read the full content of the log files
                     def fullOutput1 = readFile(file: logFilePath1, encoding: 'UTF-8')
-                    // def content = readFile(file: 'logFilePath1', encoding: 'UTF-8')
+                    // def content = readFile(file: 'logFilePath1')
                     // echo "content: ${content}"
-                    def fullOutput2 = readFile(file: logFilePath2, encoding: 'UTF-8')
+                    def fullOutput2 = readFile(file: logFilePath2)
 
                     // Print the full output
                     echo "Full Output 1:\n${fullOutput1}"
