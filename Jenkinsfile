@@ -105,8 +105,6 @@ pipeline {
 
                     // Print the full output
                     echo "Full Output 1:\n${fullOutput1}"
-                    def contentWithoutBOM = fullOutput1.replaceAll("\\uFEFF", "")
-                    echo "contentWithoutBOM: ${contentWithoutBOM}"
                     if(fullOutput1.contains("KeyError:"))
                     {
                       echo "passed"
@@ -116,7 +114,7 @@ pipeline {
                       echo "failes"
                     }
                     echo "Full Output 2:\n${fullOutput2}"
-                    if (containsSubstringWithoutBOM(fullOutput12, "printing extra step"))
+                    if (containsSubstringWithoutBOM(fullOutput2, "printing extra step"))
                     {
                       echo "full output 2 passed"
                     }
