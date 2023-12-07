@@ -51,7 +51,7 @@ pipeline {
     stage('hello') {
       steps {
                 script {
-                    def logFilePath = 'output.log'
+                    def logFilePath = 'https://github.com/Deepa-Mathad/testing-python/blob/main/output.log'
                     // Define the combined command
                     def combinedCommand = """
                         python test.py > ${logFilePath}
