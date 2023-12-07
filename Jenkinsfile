@@ -1,10 +1,9 @@
 
 
 def dsau() {
-  def logFilePath = 'output.log'
   try {
-    command = """python test.py > ${logFilePath}
-                  python extraStep.py >> ${logFilePath}
+    command = """python test.py
+                  python extraStep.py
     """
     
     // Print the command (optional)
@@ -13,14 +12,11 @@ def dsau() {
     // Execute the command and capture the return value
     try{
       // def combinedCommand = "${command} 2>&1"
-      //def returnValue = bat(returnStderr: true, script: command)
-      //echo "returnValue: ${returnValue}"
+      def returnValue = bat(returnStderr: true, script: command)
+      echo "returnValue: ${returnValue}"
       //def stderr = bat(script: combinedCommand, returnStatus: true)
       // return returnValue
-
-      bat(script: command)
-      // def fullOutput = readFile(logFilePath)
-      // echo "Full Output: ${fullOutput}"
+      
    } catch (Exception e) {
       echo "Cause: ${e}"
       return e
