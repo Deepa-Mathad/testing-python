@@ -99,7 +99,7 @@ pipeline {
                     def fullOutput2 = readFile(logFilePath2)
 
                     // Print the full output
-                    echo "Full Output 1:\n${fullOutput1}"
+                    // echo "Full Output 1:\n${fullOutput1}"
                     echo "Full Output 2:\n${fullOutput2}"
 
                     // List files in the workspace for verification
