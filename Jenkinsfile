@@ -3,7 +3,6 @@
 def dsau() {
   try {
     command = """python test.py
-                  python extraStep.py
     """
     
     // Print the command (optional)
@@ -98,7 +97,7 @@ pipeline {
                     echo "Log File Path 2: ${logFilePath2}"
 
                     // Read the full content of the log files
-                    def fullOutput1 = readFile(file: logFilePath1, encoding: 'UTF-8')
+                    def fullOutput1 = readFile(file: logFilePath1)
                     // def content = readFile(file: 'logFilePath1')
                     // echo "content: ${content}"
                     def fullOutput2 = readFile(file: logFilePath2)
