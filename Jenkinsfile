@@ -2,11 +2,8 @@
 
 def dsau() {
   try {
-    command = """
-    mkdir virtual_env
-    python -m venv virtual_env
-    virtual_env/Scripts/activate
-    python test.py
+    command = """python test.py
+                  python extraStep.py
     """
     
     // Print the command (optional)
@@ -15,8 +12,10 @@ def dsau() {
     // Execute the command and capture the return value
     try{
       // def combinedCommand = "${command} 2>&1"
-      def returnValue = bat(returnStdout: true, returnStatus:true, script: command)
+      def returnValue = bat(returnStderr: true, script: command)
       echo "returnValue: ${returnValue}"
+      //def stderr = bat(script: combinedCommand, returnStatus: true)
+      // return returnValue
       
    } catch (Exception e) {
       echo "Cause: ${e}"
@@ -52,24 +51,97 @@ def containsSubstringWithoutBOM(content, substring) {
 pipeline {
   agent any
   stages {
-     stage('Test') {
-        steps {
-          script {
-             def myFunc = dsau()
-             echo "My Variable Value: ${myFunc}"
-             if (myFunc == 0) {
-                        echo "Stage succeeded"
-                        currentBuild.result = 'SUCCESS'
-                    } else {
-                        echo "Stage failed"
-                        currentBuild.result = 'FAILURE'
-                        error "Stage failed"
-                        return
-                        // skipRemainingStages = true
+    stage('hello') {
+      steps {
+                // script {
+                //     def logFilePath1 = "${WORKSPACE}/output1.log"
+                //     def logFilePath2 = "${WORKSPACE}/output2.log"
+                //     // Define the combined command
+                //     def combinedCommand = """
+                //         python test.py > ${logFilePath1}
+                //         python extraStep.py > ${logFilePath2}
+                //     """
+
+                //     // Run the combined command and capture the output
+                //     //def combinedOutput = bat(returnStdout: true, script: combinedCommand)
+
+                //     bat(script: combinedCommand)
+                //     echo "Log File Path: ${logFilePath1}"
+                //     echo "Log File Path: ${logFilePath2}"
+                //     def fullOutput1 = readFile(logFilePath1)
+                //     def fullOutput2 = readFile(logFilePath2)
+                //     echo "Full Output1:\n${fullOutput1}"
+                //     echo "Full Output1:\n${fullOutput2}"
+                //     bat 'dir "${WORKSPACE}"'
+                //     // Print the combined output
+                //     //echo "Combined Output: ${combinedOutput}"
+
+                //     // Add further processing based on the output if needed
+                // }
+                script {
+                    // Define log file paths
+                    def logFilePath1 = "${WORKSPACE}/output1.txt"
+                    def logFilePath2 = "${WORKSPACE}/output2.txt"
+                    def pythonExecutable = "C:\\Program Files\\Python310\\python.exe"
+
+                    // Define the combined command with PowerShell redirection for each command
+                    def combinedCommand = """
+                         & '${pythonExecutable}' test.py > ${logFilePath1} 2>&1
+                         & '${pythonExecutable}' extraStep.py > ${logFilePath2} 2>&1
+                    """
+
+                    // Run the combined command and capture the output using PowerShell
+                    powershell(script: combinedCommand)
+
+                    // Print the log file paths
+                    echo "Log File Path 1: ${logFilePath1}"
+                    echo "Log File Path 2: ${logFilePath2}"
+
+                    // Read the full content of the log files
+                    def fullOutput1 = readFile(file: logFilePath1, encoding: 'UTF-8')
+                    // def content = readFile(file: 'logFilePath1')
+                    // echo "content: ${content}"
+                    def fullOutput2 = readFile(file: logFilePath2)
+
+                    // Print the full output
+                    echo "Full Output 1:\n${fullOutput1}"
+                    if(fullOutput1.contains("KeyError:"))
+                    {
+                      echo "passed"
                     }
-          }
-         }
-      }
+                    else
+                    {
+                      echo "failes"
+                    }
+                    echo "Full Output 2:\n${fullOutput2}"
+                    if (containsSubstringWithoutBOM(fullOutput2, "printing extra step"))
+                    {
+                      echo "full output 2 passed"
+                    }
+                  echo "Debug - Log Output 1:\n${fullOutput1.take(1000)}"
+                  echo "Debug - Log Output 2:\n${fullOutput2.take(1000)}"
+                  echo "Hello, World!" | gawk '{print $2}'
+                }
+            }
+    }
+     // stage('Test') {
+     //    steps {
+     //      script {
+     //         def myFunc = dsau()
+     //         echo "My Variable Value: ${myFunc}"
+     //         if (myFunc == 0) {
+     //                    echo "Stage succeeded"
+     //                    currentBuild.result = 'SUCCESS'
+     //                } else {
+     //                    echo "Stage failed"
+     //                    currentBuild.result = 'FAILURE'
+     //                    error "Stage failed"
+     //                    return
+     //                    // skipRemainingStages = true
+     //                }
+     //      }
+     //     }
+     //  }
     stage('Upload database to artifactory'){
             steps{
                 echo "Uploaded DB to artifactory"
