@@ -5,7 +5,7 @@ def dsau() {
     command = """
     mkdir virtual_env
     python -m venv virtual_env
-    virtual_env\Scripts\activate
+    virtual_env/Scripts/activate
     python test.py
     """
     
