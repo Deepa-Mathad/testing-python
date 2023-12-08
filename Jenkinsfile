@@ -100,7 +100,7 @@ pipeline {
                     def fullOutput1 = readFile(file: logFilePath1, encoding: 'UTF-16').trim()
                     // def content = readFile(file: 'logFilePath1')
                     // echo "content: ${content}"
-                    def fullOutput2 = readFile(file: logFilePath2, encoding: 'UTF-16').trim()+
+                    def fullOutput2 = readFile(file: logFilePath2, encoding: 'UTF-16').trim()
 
                     // Print the full output
                     echo "Full Output 1:\n${fullOutput1}"
