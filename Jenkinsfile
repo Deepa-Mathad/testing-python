@@ -85,6 +85,9 @@ pipeline {
 
                     // Define the combined command with PowerShell redirection for each command
                     def combinedCommand = """
+                         mkdir virtual_env
+                         python -m venv virtual_env
+                         virtual_env/bin/activate
                          & '${pythonExecutable}' test.py > ${logFilePath1} 2>&1
                          & '${pythonExecutable}' extraStep.py > ${logFilePath2} 2>&1
                     """
