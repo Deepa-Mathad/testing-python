@@ -97,14 +97,14 @@ pipeline {
                     echo "Log File Path 2: ${logFilePath2}"
 
                     // Read the full content of the log files
-                    def fullOutput1 = readFile(file: logFilePath1)
+                    def fullOutput1 = readFile(file: logFilePath1, encoding: 'UTF-16').trim()
                     // def content = readFile(file: 'logFilePath1')
                     // echo "content: ${content}"
                     def fullOutput2 = readFile(file: logFilePath2)
 
                     // Print the full output
                     echo "Full Output 1:\n${fullOutput1}"
-                    if(fullOutput1.contains("KeyError:"))
+                    if(fullOutput1.contains("number"))
                     {
                       echo "passed"
                     }
