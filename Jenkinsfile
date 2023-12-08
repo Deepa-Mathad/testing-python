@@ -104,7 +104,7 @@ pipeline {
 
                     // Print the full output
                     echo "Full Output 1:\n${fullOutput1}"
-                    if(fullOutput1.contains("number"))
+                    if(fullOutput1.contains("KeyError:"))
                     {
                       echo "passed"
                     }
