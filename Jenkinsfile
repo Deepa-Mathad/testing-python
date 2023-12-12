@@ -78,6 +78,7 @@ pipeline {
                 //     // Add further processing based on the output if needed
                 // }
                 script {
+                  try{
                     // Define log file paths
                     def logFilePath1 = "${WORKSPACE}/output1.txt"
                     def logFilePath2 = "${WORKSPACE}/output2.txt"
@@ -123,6 +124,12 @@ pipeline {
                   echo "Debug - Log Output 1:\n${fullOutput1.take(1000)}"
                   echo "Debug - Log Output 2:\n${fullOutput2.take(1000)}"
                   echo "Hello, World!" | gawk '{print $2}'
+                }
+                  catch (e)
+                    {
+                        echo"Cause for exception: ${e.message}"
+                        error("Exceptions with ${e}")
+                    }
                 }
             }
     }
