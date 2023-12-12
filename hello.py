@@ -18,4 +18,5 @@ def initial():
         print("End of function initial")
     except Exception as e:
         print("Exception in initial", e)
+        return e
         sys.exit(1)
