@@ -128,6 +128,9 @@ pipeline {
                   catch (e)
                     {
                         echo"Cause for exception: ${e.message}"
+                        e.getCauses().each { cause ->
+                              echo "Cause: ${cause}"
+                          }
                         error("Exceptions with ${e}")
                     }
                 }
