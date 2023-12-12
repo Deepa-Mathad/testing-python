@@ -127,7 +127,7 @@ pipeline {
                 }
                   catch (e)
                     {
-                        echo"Cause for exception: ${e.message}"
+                        echo"Cause for exception: ${e.getCause()}"
                         e.getCauses().each { cause ->
                               echo "Cause: ${cause}"
                           }
