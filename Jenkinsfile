@@ -128,6 +128,9 @@ pipeline {
                   catch (e)
                     {
                         echo"Cause for exception: ${e.getCause()}"
+                        echo "Exception Class: ${e.getClass()}"
+                        echo "Exception Message: ${e.getMessage()}"
+                        echo "Exception Stack Trace: ${e.getStackTrace().join('\n')}"
                         e.getCauses().each { cause ->
                               echo "Cause: ${cause}"
                           }
