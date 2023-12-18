@@ -5,6 +5,8 @@ pipeline {
       steps {
 		script {
 			try {
+				def branchName = env.BRANCH_NAME == 'main'
+				echo "compare: ${branchName}"
 				echo "banch name: ${env.BRANCH_NAME}"
 			}
 			catch (e)
