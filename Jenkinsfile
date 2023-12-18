@@ -5,9 +5,7 @@ pipeline {
       steps {
 		script {
 			try {
-				errorCode = bat( label: '', returnStdout: true, script: """
-				bat 'hello.py
-        echo "banch name: ${env.BRANCH_NAME}"
+				echo "banch name: ${env.BRANCH_NAME}"
 			}
 			catch (e)
 			{
