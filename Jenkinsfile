@@ -160,6 +160,7 @@ pipeline {
     stage('Upload database to artifactory'){
             steps{
                 echo "Uploaded DB to artifactory"
+                echo "branch name: ${env.BRANCH_NAME}"
             }
         }
   }
