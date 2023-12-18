@@ -78,52 +78,52 @@ pipeline {
                 //     // Add further processing based on the output if needed
                 // }
                 script {
-                  try{
-                    // Define log file paths
-                    def logFilePath1 = "${WORKSPACE}/output1.txt"
-                    def logFilePath2 = "${WORKSPACE}/output2.txt"
-                    def pythonExecutable = "C:\\Program Files\\Python310\\python.exe"
+                  // try{
+                  //   // Define log file paths
+                  //   def logFilePath1 = "${WORKSPACE}/output1.txt"
+                  //   def logFilePath2 = "${WORKSPACE}/output2.txt"
+                  //   def pythonExecutable = "C:\\Program Files\\Python310\\python.exe"
 
-                    // Define the combined command with PowerShell redirection for each command
-                    def combinedCommand = """
-                         mkdir virtual_env
-                         python -m venv virtual_env
-                         virtual_env/bin/activate
-                         & '${pythonExecutable}' test.py > ${logFilePath1} 2>&1
-                         & '${pythonExecutable}' extraStep.py > ${logFilePath2} 2>&1
-                    """
+                  //   // Define the combined command with PowerShell redirection for each command
+                  //   def combinedCommand = """
+                  //        mkdir virtual_env
+                  //        python -m venv virtual_env
+                  //        virtual_env/bin/activate
+                  //        & '${pythonExecutable}' test.py > ${logFilePath1} 2>&1
+                  //        & '${pythonExecutable}' extraStep.py > ${logFilePath2} 2>&1
+                  //   """
 
                     // Run the combined command and capture the output using PowerShell
-                    powershell(script: combinedCommand)
+                    // powershell(script: combinedCommand)
 
-                    // Print the log file paths
-                    echo "Log File Path 1: ${logFilePath1}"
-                    echo "Log File Path 2: ${logFilePath2}"
+                    // // Print the log file paths
+                    // echo "Log File Path 1: ${logFilePath1}"
+                    // echo "Log File Path 2: ${logFilePath2}"
 
-                    // Read the full content of the log files
-                    def fullOutput1 = readFile(file: logFilePath1, encoding: 'UTF-16').trim()
-                    // def content = readFile(file: 'logFilePath1')
-                    // echo "content: ${content}"
-                    def fullOutput2 = readFile(file: logFilePath2, encoding: 'UTF-16').trim()
+                    // // Read the full content of the log files
+                    // def fullOutput1 = readFile(file: logFilePath1, encoding: 'UTF-16').trim()
+                    // // def content = readFile(file: 'logFilePath1')
+                    // // echo "content: ${content}"
+                    // def fullOutput2 = readFile(file: logFilePath2, encoding: 'UTF-16').trim()
 
-                    // Print the full output
-                    echo "Full Output 1:\n${fullOutput1}"
-                    if(fullOutput1.contains("KeyError:"))
-                    {
-                      echo "passed"
-                    }
-                    else
-+                    {
-                      echo "failes"
-                    }
-                    echo "Full Output 2:\n${fullOutput2}"
-                    if (containsSubstringWithoutBOM(fullOutput2, "printing extra step"))
-                    {
-                      echo "full output 2 passed"
-                    }
-                  echo "Debug - Log Output 1:\n${fullOutput1.take(1000)}"
-                  echo "Debug - Log Output 2:\n${fullOutput2.take(1000)}"
-                  echo "Hello, World!" | gawk '{print $2}'
+                    // // Print the full output
+                    // echo "Full Output 1:\n${fullOutput1}"
+                    // if(fullOutput1.contains("KeyError:"))
+                    // {
+                    //   echo "passed"
+                    // }
+                    // else
+// +                    {
+//                       echo "failes"
+//                     }
+                  //   echo "Full Output 2:\n${fullOutput2}"
+                  //   if (containsSubstringWithoutBOM(fullOutput2, "printing extra step"))
+                  //   {
+                  //     echo "full output 2 passed"
+                  //   }
+                  // echo "Debug - Log Output 1:\n${fullOutput1.take(1000)}"
+                  // echo "Debug - Log Output 2:\n${fullOutput2.take(1000)}"
+                   echo "Hello, World!"
                 }
                   catch (e)
                     {
